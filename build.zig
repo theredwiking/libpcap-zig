@@ -31,7 +31,7 @@ pub fn build(b: *std.Build) void {
     // running `zig build`).
     b.installArtifact(lib);
 
-    const module = b.addModule("libpcap-zig", .{
+    const module = b.addModule("libpcap_zig", .{
         .root_source_file = .{ .path = "src/root.zig" },
     });
     module.linkSystemLibrary("pcap");
