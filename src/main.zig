@@ -1,6 +1,6 @@
 const std = @import("std");
 
-const pcap = @import("lib/pcap.zig");
+const pcap = @import("root.zig");
 
 const assert = std.debug.assert;
 
