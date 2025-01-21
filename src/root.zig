@@ -2,12 +2,12 @@ const pcap = @cImport({
     @cInclude("pcap/pcap.h");
 });
 
-const errors = @import("pcap/errors.zig");
-const opening = @import("pcap/opening.zig");
-const dataLink = @import("pcap/datalink.zig");
-const lookupNet = @import("pcap/lookupnet.zig");
-const devices = @import("pcap/devices.zig");
-const capture = @import("pcap/capture.zig");
+const errors = @import("errors.zig");
+const opening = @import("opening.zig");
+const dataLink = @import("datalink.zig");
+const lookupNet = @import("lookupnet.zig");
+const devices = @import("devices.zig");
+const capture = @import("capture.zig");
 
 // Exports funtions
 pub const openLive = opening._openLive;
