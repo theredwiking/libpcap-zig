@@ -9,6 +9,7 @@ pub fn build(b: *std.Build) void {
     // means any target is allowed, and the default is native. Other options
     // for restricting supported target set are available.
     const target = b.standardTargetOptions(.{});
+    const linux = b.option(bool, "linux", "Target Linux") orelse false;
 
     // Standard optimization options allow the person running `zig build` to select
     // between Debug, ReleaseSafe, ReleaseFast, and ReleaseSmall. Here we do not
@@ -32,10 +33,15 @@ pub fn build(b: *std.Build) void {
     b.installArtifact(lib);
 
     const module = b.addModule("libpcap_zig", .{
+        .target = b.resolveTargetQuery(.{
+            .os_tag = if (linux) .linux else null,
+        }),
+        .link_libc = true,
         .root_source_file = b.path("src/root.zig"),
     });
-    module.linkSystemLibrary("pcap");
-    module.linkLibC();
+    module.linkSystemLibrary("pcap", .{
+        .needed = true,
+    });
 
     // Creates a step for unit testing. This only builds the test executable
     // but does not run it.
