@@ -6,7 +6,7 @@ Only works on linux as fair as I know
 
 ## TODO
 - [ ] Add unit test to necessary functions
-- [ ] Change to be an library only
+- [x] Change to be an library only
 - [ ] Compile libpcap in build.zig
 - [ ] Research static libpcap
 - [ ] Add wrapper for reading and writing pcap files
